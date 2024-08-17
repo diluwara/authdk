@@ -1,0 +1,14 @@
+@import "../../../assets/main";
+
+.user {
+  &-name {
+    color: $color-white;
+    font-family: Roboto;
+    white-space: nowrap;
+  }
+
+  .logout__icon {
+    color: $color-tertiary-blue;
+    margin-left: 1.1rem;
+  }
+}

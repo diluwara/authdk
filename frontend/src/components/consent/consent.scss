@@ -1,0 +1,56 @@
+@import "assets/styles/abstracts/variables";
+
+.consent {
+  font-family: Roboto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1.4rem;
+  background-color: $color-off-white;
+  margin: 1rem 0;
+
+  &__wrapper {
+    width: 117rem;
+  }
+
+  &--item {
+    margin-top: 0.5rem;
+    color: $color-primary;
+    padding: 2.4rem;
+    text-align: justify;
+    line-height: 2.2rem;
+
+    a {
+      color: $color-primary ;
+    }
+  }
+
+  &__reader {
+    display: flex;
+    flex-direction: column;
+    color: $color-gray;
+    width: 100%;
+
+    &--wrapper {
+      display: flex;
+      color: $color-white;
+      padding: 1rem;
+      margin: 0.5rem 0 0;
+      background: $color-dark-gray;
+      height: 5.1rem;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
+  }
+}
+
+@media (width <= 1180px) {
+  .consent__wrapper {
+    width: auto;
+  }
+
+  .consent__reader--wrapper {
+    height: auto;
+  }
+}

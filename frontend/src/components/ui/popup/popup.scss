@@ -1,0 +1,41 @@
+@import "../../../assets/main";
+
+.popup {
+  position: absolute;
+  top: 7rem;
+  right: 15rem;
+  width: 29rem;
+  height: 14rem;
+  background: $color-white;
+  border: 0 none;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.1rem 0.3rem rgba(0 0 0 /30%);
+
+  &--show {
+    display: block;
+  }
+
+  &--hide {
+    display: none;
+  }
+
+  &__content {
+    height: 63%;
+    padding: 1rem;
+    font-size: 1.2rem;
+    color: $color-primary;
+    text-align: left;
+    font-family: poppins-Medium;
+  }
+
+  &__footer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@include styles-for-device-size(sm) {
+  .popup {
+    top: 7rem;
+    right: 5rem;
+  }
+}

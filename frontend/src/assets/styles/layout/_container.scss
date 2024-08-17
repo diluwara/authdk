@@ -1,0 +1,14 @@
+.container {
+  margin: 0 auto auto;
+  display: flex;
+  flex-direction: column;
+  width: 90rem;
+  justify-content: center;
+  padding-top: 10rem;
+}
+
+@media (width <= 1180px) {
+  .container {
+    width: 100%;
+  }
+}

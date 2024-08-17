@@ -1,0 +1,18 @@
+@import "assets/styles/abstracts/mixins";
+
+.App {
+  text-align: center;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  position: relative;
+}
+
+.logo {
+  margin: 3.2rem 0 0 3.2rem;
+
+  @include styles-for-device-size(sm) {
+    margin: 2.4rem 0 0 2.4rem;
+  }
+}

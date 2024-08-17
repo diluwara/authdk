@@ -1,0 +1,23 @@
+@import "../../../assets/main";
+
+.nafhub-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.6rem;
+  background-color: $color-primary;
+  padding: 0 14.5rem;
+  min-height: 6.4rem;
+  font-family: Roboto;
+  position: relative;
+
+  .nafhub-logo {
+    height: 2.8rem;
+    margin-right: 12.9rem;
+  }
+
+  @include styles-for-device-size(sm) {
+    padding: 0 2rem;
+    height: 5.4rem; 
+  }
+}

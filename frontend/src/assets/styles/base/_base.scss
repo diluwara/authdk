@@ -1,0 +1,19 @@
+@import "assets/styles/base/typography";
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  // this defines 1rem is equals 10 pixels
+  font-size: 62.5%;
+  font-family: Roboto;
+}
+
+body {
+  box-sizing: border-box;
+}

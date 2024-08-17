@@ -1,0 +1,186 @@
+@import "../../../assets/main";
+
+.btn {
+  font-family: Poppins-Medium;
+  cursor: pointer;
+  display: inline-block;
+  margin: auto;
+  padding: 1rem;
+  font-size: 1.6rem;
+  border: 0;
+  line-height: 1;
+  min-height: 5.2rem;
+  padding-left: 4rem;
+  padding-right: 4rem;
+
+  &--default-left {
+    border-bottom-left-radius: 0.5rem;
+  }
+
+  &--default-right {
+    border-bottom-right-radius: 0.5rem;
+  }
+
+  /* variants */
+  &--primary {
+    @include replace-btn-variant(
+      $color-primary,
+      $color-white,
+      $color-secondary,
+      $color-white
+    );
+  }
+
+  &--outline-primary {
+    border: 0.2rem solid $color-primary;
+    @include replace-btn-variant(
+      transparent,
+      $color-primary,
+      $color-primary,
+      $color-white
+    );
+  }
+
+  &--secondary {
+    border: 1px solid $color-secondary;
+    @include replace-btn-variant(
+      $color-secondary,
+      $color-white,
+      $color-primary,
+      $color-white
+    );
+  }
+
+  &--secondary-three {
+    @include replace-btn-variant(
+      $color-secondary,
+      $color-white,
+      $color-primary,
+      $color-white
+    );
+  }
+
+  &--secondary-two {
+    border: 1px solid $color-secondary;
+    @include replace-btn-variant-no-hover(
+      $color-secondary,
+      $color-white,
+      $color-primary,
+      $color-white
+    );
+  }
+
+  &--success {
+    border: none;
+    @include replace-btn-variant(
+      $color-success,
+      $color-white,
+      $color-success,
+      $color-white
+    );
+  }
+
+  &--warning {
+    border: none;
+    @include replace-btn-variant(
+      $color-warning,
+      $color-white,
+      $color-warning,
+      $color-white
+    );
+  }
+
+  &--danger {
+    border: none;
+    @include replace-btn-variant(
+      $color-danger,
+      $color-white,
+      $color-danger,
+      $color-white
+    );
+  }
+
+  &--link {
+    padding: 0;
+    background-color: transparent;
+    min-height: fit-content;
+    border-bottom: 0.1rem solid $color-primary;
+    color: $color-primary;
+
+    &:hover {
+      background-color: transparent;
+      border-bottom: 0.1rem solid $color-primary;
+      color: $color-primary;
+    }
+  }
+
+  &--white {
+    @include replace-btn-variant(
+      $color-white,
+      $color-primary,
+      $color-primary,
+      $color-white
+    );
+  }
+
+  &--transparent {
+    border: 0.3rem solid $color-primary;
+    @include replace-btn-variant(
+      transparent,
+      $color-primary,
+      transparent,
+      $color-primary
+    );
+  }
+
+  /* types */
+  &--disabled {
+    border: none;
+    background-color: $color-inactive;
+    color: $color-gray-bg2;
+  }
+
+  &--round {
+    // border-radius: 0.4rem;
+    border-radius: 2.8rem;
+  }
+
+  &--squared {
+    border-radius: 5px;
+  }
+
+  /* size */
+  &--small {
+    font-size: 1.4rem;
+    min-height: auto;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  &--medium {
+    font-size: 1.6rem;
+    min-height: auto;
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+
+  &--large {
+    min-height: auto;
+    font-size: 2rem;
+    padding: 1.2rem 4rem;
+  }
+
+  &--full {
+    width: 100%;
+  }
+}
+
+@include styles-for-device-size(sm) {
+  .btn {
+    &--small {
+      width: 45%;
+      font-size: 1.8rem;
+      padding: 1rem 1.6rem;
+    }
+  }
+}
