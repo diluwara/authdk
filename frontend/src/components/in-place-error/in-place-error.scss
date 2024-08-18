@@ -1,0 +1,12 @@
+@import "assets/styles/abstracts/variables";
+
+.error-message {
+  color: $color-danger;
+  text-align: left;
+  margin-top: 0.5rem;
+  font-size: small;
+
+  &__icon {
+    margin-right: 0.5rem;
+  }
+}

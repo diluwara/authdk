@@ -1,0 +1,58 @@
+@import "assets/styles/abstracts/variables";
+
+.buttongroup label {
+  display: flex;
+  align-items: center;
+  margin-left: 0;
+  margin-bottom: .95rem;
+  width: 50rem;
+  height: 2.7rem;
+  padding: 0;
+  text-align: left;
+  font: 1.4rem/4.4rem Poppins-Medium;
+  letter-spacing: 0;
+  color: $color-primary;
+  opacity: 1;
+  white-space: nowrap;
+
+  &--column {
+    flex-direction: column;
+  }
+
+  &--row {
+    flex-direction: row;
+  }
+
+  input[type="checkbox"] {
+    appearance: none;
+    background-color: #fff;
+    margin-right: 1rem;
+    cursor: pointer;
+    color: #707070;
+    width: 1.6rem;
+    height: 1.6rem;
+    border: 0.1rem solid #707070;
+    transform: translateY(-0.075rem);
+    display: grid;
+    place-content: center;
+  }
+
+  input[type="checkbox"]::before {
+    content: "";
+    width: 1rem;
+    height: 1rem;
+    transform: scale(0);
+    transition: 50ms transform ease-in-out;
+    box-shadow: inset 1rem 1rem $color-secondary;
+    border: 1px solid #707070;
+  }
+
+  input[type="checkbox"]:checked {
+    border: 1px solid $color-secondary;
+    background: #fff 0% 0% no-repeat padding-box;
+  }
+
+  input[type="checkbox"]:checked::before {
+    transform: scale(1);
+  }
+}

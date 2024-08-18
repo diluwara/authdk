@@ -1,0 +1,16 @@
+@import "../../../assets/main";
+
+.logout {
+  cursor: pointer;
+
+  &__description {
+    color: $color-white;
+    font-family: Roboto;
+    white-space: nowrap;
+  }
+
+  &__icon {
+    color: $color-tertiary-blue;
+    margin-left: 1.1rem;
+  }
+}

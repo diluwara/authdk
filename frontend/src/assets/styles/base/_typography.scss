@@ -1,0 +1,111 @@
+@import "assets/styles/abstracts/variables";
+@import "assets/styles/abstracts/mixins";
+
+h1,
+h2,
+h4,
+h5,
+h6 {
+  font-family: Poppins-Medium;
+}
+
+p {
+  font-family: Roboto;
+}
+
+h1 {
+  font-size: 4.2rem;
+}
+
+h2 {
+  font-size: 4rem;
+}
+
+h3 {
+  font-family: Poppins-SemiBold;
+  font-size: 3.2rem;
+}
+
+h4 {
+  font-size: 2.4rem;
+}
+
+h5 {
+  font-size: 2rem;
+}
+
+h6 {
+  font-size: 1.8rem;
+}
+
+.sub-header {
+  font-family: Roboto;
+  font-size: 1.8rem;
+  line-height: 2.4rem;
+
+  &--primary {
+    color: $color-secondary;
+  }
+
+  @include styles-for-device-size(sm) {
+    font-size: 1.4rem;
+  }
+}
+
+a {
+  font-family: Roboto;
+  color: $color-secondary;
+}
+
+@include styles-for-device-size(sm) {
+  h1 {
+    font-size: 2.8rem;
+  }
+
+  .sub-header {
+    font: 1.6rem;
+  }
+}
+
+/* ROBOTO */
+
+@font-face {
+  font-family: Roboto;
+  src: url("../../fonts/roboto/Roboto-Regular.ttf");
+}
+@font-face {
+  font-family: Roboto-Thin;
+  src: url("../../fonts/roboto/Roboto-Thin.ttf");
+}
+@font-face {
+  font-family: Roboto-Bold;
+  src: url("../../fonts/roboto/Roboto-Bold.ttf");
+}
+@font-face {
+  font-family: Roboto-Medium;
+  src: url("../../fonts/roboto/Roboto-Medium.ttf");
+}
+
+/* POPPINS */
+
+@font-face {
+  font-family: Poppins;
+  src: url("../../fonts/poppins/Poppins-Regular.ttf");
+}
+
+@font-face {
+  font-family: Poppins-Medium;
+  src: url("../../fonts/poppins/Poppins-Medium.ttf");
+}
+@font-face {
+  font-family: Poppins-Thin;
+  src: url("../../fonts/poppins/Poppins-Thin.ttf");
+}
+@font-face {
+  font-family: Poppins-Bold;
+  src: url("../../fonts/poppins/Poppins-Bold.ttf");
+}
+@font-face {
+  font-family: Poppins-SemiBold;
+  src: url("../../fonts/poppins/Poppins-SemiBold.ttf");
+}

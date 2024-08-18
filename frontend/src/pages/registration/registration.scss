@@ -1,0 +1,45 @@
+@import "../../assets/main";
+
+.registration {
+  .row {
+    display: flex;
+    flex-direction: row;
+
+    &--item {
+      flex-grow: 1;
+      flex-basis: 100%;
+    }
+  }
+
+  .header__wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    margin: auto;
+  }
+
+  .inner-header {
+    font-size: 1.3rem;
+    margin: 1rem;
+    font-family: Roboto;
+    font-weight: 600;
+  }
+
+  .form__wrapper {
+    width: 70%;
+  }
+
+  @include styles-for-device-size(xs) {
+    .header__wrapper {
+      width: 95%;
+    }
+
+    .row {
+      flex-direction: column;
+    }
+
+    .form__wrapper {
+      width: 100%;
+    }
+  }
+}

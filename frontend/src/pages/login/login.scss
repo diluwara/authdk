@@ -1,0 +1,32 @@
+@import "assets/styles/abstracts/variables";
+@import "assets/styles/abstracts/mixins";
+
+.login {
+  display: flex;
+  flex-direction: column;
+  font-family: Roboto;
+  font-style: normal;
+  height: 100vh;
+
+  .login-error {
+    color: $color-danger;
+    font: 1.6rem/2.1rem Roboto;
+  }
+
+  .login-bottom {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    font: 1.6rem/2.1rem Roboto;
+  }
+
+  .forgot-password {
+    margin: 2.2rem;
+  }
+
+  @include styles-for-device-size(lg) {
+    .login-bottom {
+      font-size: 1.4rem;
+    }
+  }
+}
