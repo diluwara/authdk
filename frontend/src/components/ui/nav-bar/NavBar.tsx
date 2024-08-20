@@ -1,12 +1,12 @@
-import { useRef } from "react";
-import { NavLink} from "react-router-dom";
+import { useRef, useState } from "react";
+import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark, faBars } from "@fortawesome/free-solid-svg-icons";
 
 import "./nav-bar.scss";
 import Logout from "../logout/Logout";
-import { useDispatch } from "react-redux";
-import { clearUser } from "components/user/userSlice";
+import localDB from "utilities/localDB";
+import { useRedirect } from "hooks/useRedirect";
 
 export interface INavBarProps {
   userName?: string;
@@ -16,20 +16,19 @@ export interface INavBarProps {
 export default function NavBar({
   userName,
   showNavLinks = false,
-}: INavBarProps) {
+}: Readonly<INavBarProps>) {
   const navRef = useRef<HTMLElement>(null);
-  const dispatch = useDispatch();
+  const [isSuccess, setIsSuccess] = useState(false);
+
+  useRedirect(isSuccess, "/");
 
   const showNavbar = () => {
     navRef.current?.classList.toggle("navbar--actions");
   };
 
   const handleLogout = () => {
-    // Clear user state from local storage
-    localStorage.removeItem("userState");
-    // Clear user state in Redux
-    dispatch(clearUser());
-    window.location.reload();
+    localDB.logout();
+    setIsSuccess(true);
   };
 
   return (
@@ -51,7 +50,7 @@ export default function NavBar({
   );
 }
 
-function NavLinks({ className = "" }: { className?: string }) {
+function NavLinks({ className = "" }: Readonly<{ className?: string }>) {
   const navbarClass = "navbar__links" + " " + className;
   return (
     <div className={navbarClass}>

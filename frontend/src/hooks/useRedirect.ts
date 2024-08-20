@@ -8,6 +8,7 @@ export const useRedirect = (isSuccess: boolean, navigateTo: Route) => {
   const navigate = useNavigate();
 
   useEffect(() => {
+
     if (isSuccess) {
       navigate(navigateTo);
     }

@@ -48,8 +48,8 @@ export const PWD_MATCH_ERROR = " Passwords don't match. Please try again. ";
 export const PWD_MIN_LENGTH = 8;
 
 export const BASE_URL = "";
-export const BASE_BFF_WEB_URL = "http://localhost:3000";
-export const DEFAULT_HTTP_TIMEOUT = 1000; //units in milliseconds
+export const BASE_BFF_WEB_URL = "http://localhost:6868";
+export const DEFAULT_HTTP_TIMEOUT = 1000;
 export const FULLSTORY_ORG_ID = "o-1HNTQZ-na1";
 
 export const DROPDOWN_YEARS_FOR_CALENDAR = 40;

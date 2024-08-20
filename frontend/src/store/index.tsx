@@ -1,12 +1,10 @@
 // src/store/store.ts
 import { configureStore } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/query';
-import userReducer from 'components/user/userSlice';
 import { loginApi } from 'services/loginService'; // Import the login service API
 
 export const store = configureStore({
   reducer: {
-    user: userReducer,
     [loginApi.reducerPath]: loginApi.reducer, // Add the login API reducer
   },
   middleware: (getDefaultMiddleware) =>

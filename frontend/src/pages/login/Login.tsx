@@ -16,8 +16,8 @@ import { email, password_input as password } from "utilities/formSchemas";
 import "./login.scss";
 import { useToast } from "components/ui/react-toast/ReactToast";
 import { decryptObject } from "utilities/cryptoUtils";
-import { useDispatch } from "react-redux";
-import { setUser } from "components/user/userSlice";
+import localDB from "utilities/localDB";
+import { useRedirect } from "hooks/useRedirect";
 
 // Define types for API response and decrypted data
 interface LoginResponse {
@@ -41,8 +41,8 @@ type FormValues = z.infer<typeof formSchema>;
 
 export default function Login() {
   const { notifySuccess, notifyError } = useToast();
-  const dispatch = useDispatch();
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+  const [isDisable, setIsDisable] = useState(false);
 
   const {
     register,
@@ -53,9 +53,13 @@ export default function Login() {
   });
 
   const [postLogin] = usePostLoginMutation();
+  const userState = localDB.get();
+
+  useRedirect(userState?.isAuthenticated ?? false, "/dashboard");
 
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
     try {
+      setIsDisable(true);
       const response = (await postLogin(data).unwrap()) as LoginResponse;
       if (response.success) {
         notifySuccess(response.message);
@@ -63,22 +67,17 @@ export default function Login() {
           response.data
         );
         if (decryptedData) {
+          setIsDisable(false);
           const { id = "", email = "", name = "" } = decryptedData;
 
-          dispatch(
-            setUser({
-              id,
-              email,
-              name,
-              isAuthenticated: true,
-            })
-          );
-          window.location.reload();
+          localDB.login(id, email, name);
         }
       } else {
+        setIsDisable(false);
         notifyError(response.message);
       }
     } catch (error) {
+      setIsDisable(false);
       console.error("Login failed, error:", error);
     }
   };
@@ -113,7 +112,11 @@ export default function Login() {
               errorMessage: errors.password?.message || "",
             }}
           />
-          <Button title="Log In" className="margin-top-small" />
+          <Button
+            title="Log In"
+            className="margin-top-small"
+            disabled={isDisable}
+          />
         </Form>
         <div className="login-bottom">
           <a href="/registration" className="forgot-password">

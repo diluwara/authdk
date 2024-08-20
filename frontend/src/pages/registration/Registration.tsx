@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { z } from "zod";
@@ -16,9 +17,8 @@ import { email, name, password_input } from "utilities/formSchemas";
 import "./registration.scss";
 import { useToast } from "components/ui/react-toast/ReactToast";
 import { decryptObject } from "utilities/cryptoUtils";
-import { setUser } from "components/user/userSlice";
-import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import localDB from "utilities/localDB";
+import { useRedirect } from "hooks/useRedirect";
 
 interface RegistrationResponse {
   success: boolean;
@@ -43,8 +43,8 @@ type FormValues = z.infer<typeof formSchema>;
 
 export default function Registration() {
   const { notifySuccess, notifyError } = useToast();
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const [isDisable, setIsDisable] = useState(false);
+
   const {
     handleSubmit,
     control,
@@ -55,10 +55,14 @@ export default function Registration() {
   });
 
   const [PostRegistration] = usePostRegistrationMutation();
+  const userState = localDB.get();
+
+  useRedirect(userState?.isAuthenticated ?? false, "/dashboard");
 
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
     // Using any for now, we will type this properly
     try {
+      setIsDisable(true);
       const registrationData: RegisterData = {
         email: data.email,
         name: data.name,
@@ -75,23 +79,17 @@ export default function Registration() {
           response.data
         );
         if (decryptedData) {
+          setIsDisable(false);
           const { id = "", email = "", name = "" } = decryptedData;
 
-          dispatch(
-            setUser({
-              id,
-              email,
-              name,
-              isAuthenticated: true,
-            })
-          );
-          navigate("/dashboard");
-          window.location.reload();
+          localDB.login(id, email, name);
         }
       } else {
+        setIsDisable(false);
         notifyError(response.message);
       }
     } catch (error) {
+      setIsDisable(false);
       console.error("Registration failed, error:", error);
     }
   };
@@ -145,7 +143,7 @@ export default function Registration() {
               />
             )}
           />
-          <Button title="Sign Up" />
+          <Button title="Sign Up" disabled={isDisable} />
         </Form>
       </div>
       <Consent
